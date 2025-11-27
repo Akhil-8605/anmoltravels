@@ -11,6 +11,9 @@ import HappyTravelersImage from "../asset/travellers.avif"
 import "./HomePage.css"
 import { useNavigate } from "react-router-dom"
 
+import Phone from "../asset/Phone.png"
+import Whatsapp from "../asset/WhatsApp.webp"
+
 import SwiftDzire from "../asset/vehicles/swiftdezire.jpg"
 import Ertiga from "../asset/vehicles/Ertiga.webp"
 import Tavera from "../asset/vehicles/tavera.webp"
@@ -46,6 +49,20 @@ export default function HomePage() {
             <FAQSection />
             <CTASection />
             <Footer />
+            <motion.div
+                className="always-on-top"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1, duration: 0.6 }}
+            >
+                <a href="tel:+919503665843" className="call-btn" aria-label="Call Now">
+                    <img src={Phone} alt="Call Now" className="call-btn-img" title="Call to +919503665843"/>
+                </a>
+
+                <a href="https://wa.me/+919503665843" className="call-btn" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+                    <img src={Whatsapp} alt="WhatsApp" className="call-btn-img" title="Chat on WhatsApp with +919503665843"/>
+                </a>
+            </motion.div>
         </div>
     )
 }

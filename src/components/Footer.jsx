@@ -145,8 +145,8 @@ export default function Footer() {
                                 <MapPin size={18} />
                             </div>
                             <p>
-                                SR No. 204, Papde Wasti Rd, near Sunrise Society, Dhamalwadi, Bhekrai Nagar, Papde Wasti, Phursungi,
-                                Pune, Maharashtra 412308
+                                NEW RTO OFFICE, PLOT NO 203/26, Vijapur Rd, behind NIRMITI VIHAR, Vijay Deshmukh Nagar, Solapur, 
+                                Maharashtra 413004
                             </p>
                         </div>
 
@@ -161,7 +161,7 @@ export default function Footer() {
                             <div className="contact-icon email">
                                 <Mail size={18} />
                             </div>
-                            <a href="mailto:ashaikh1419@gmail.com">ashaikh1419@gmail.com</a>
+                            <a href="mailto:anmoltourstravells@gmail.com">anmoltourstravells@gmail.com</a>
                         </div>
                     </div>
                 </div>
