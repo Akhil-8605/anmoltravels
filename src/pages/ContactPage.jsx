@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { motion , AnimatePresence} from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import Header from "../components/Header"
 import "./ContactPage.css"
 import Footer from "../components/Footer"
@@ -164,51 +164,70 @@ export default function ContactPage() {
                         <div className="contact-content">
                             {/* Contact Info */}
                             <motion.div
-                                className="contact-info-box"
                                 initial={{ opacity: 0, x: -30 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.6, delay: 0.2 }}
+                                style={{ paddingBottom: ".25rem" }}
                             >
-                                <h2>Get In Touch</h2>
 
-                                <div className="info-item">
-                                    <div className="info-icon">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <h3>Phone</h3>
-                                        <p>+91 9503665843</p>
-                                    </div>
-                                </div>
+                                <motion.div
+                                    className="contact-info-box"
+                                    style={{ paddingBottom: ".75rem" }}
+                                    initial={{ opacity: 0, x: -30 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ duration: 0.6, delay: 0.2 }}
+                                >
+                                    <h2>Get In Touch</h2>
 
-                                <div className="info-item">
-                                    <div className="info-icon">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                                            <polyline points="22,6 12,13 2,6" />
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <h3>Email</h3>
-                                        <p>ashaikh1419@gmail.com</p>
-                                    </div>
-                                </div>
+                                    <a style={{ textDecoration: "none" }} href="tel:9503665843" className="info-item">
+                                        <div className="info-icon">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h3>Phone</h3>
+                                            <p>+91 9503665843</p>
+                                        </div>
+                                    </a>
 
-                                <div className="info-item">
-                                    <div className="info-icon">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                                            <circle cx="12" cy="10" r="3" />
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <h3>Address</h3>
-                                        <p>SR No. 204, Papde Wasti Rd,</p>
-                                        <p>Dhamalwadi, Bhekrai Nagar, Phursungi, Pune</p>
-                                    </div>
-                                </div>
+                                    <a style={{ textDecoration: "none" }} href="mailto:anmoltoursandtravels@gmail.com" className="info-item">
+                                        <div className="info-icon">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                                <polyline points="22,6 12,13 2,6" />
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h3>Email</h3>
+                                            <p>anmoltoursandtravels@gmail.com</p>
+                                        </div>
+                                    </a>
+
+                                    <a style={{ textDecoration: "none" }} href="https://maps.app.goo.gl/EeChf6VDFCBU7UU26" className="info-item">
+                                        <div className="info-icon">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                                <circle cx="12" cy="10" r="3" />
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h3>Address</h3>
+                                            <p>NEW RTO OFFICE, PLOT NO 203/26, Vijapur Rd, behind NIRMITI VIHAR, Vijay Deshmukh Nagar,</p>
+                                            <p>Solapur, Maharashtra 413004</p>
+                                        </div>
+                                    </a>
+                                </motion.div>
+
+                                <motion.div
+                                    className="contact-info-box"
+                                    style={{ padding: "1rem", marginTop: "2rem" }}
+                                    initial={{ opacity: 0, x: -30 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ duration: 0.6, delay: 0.2 }}
+                                >
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d708.0407003641604!2d75.88790602293835!3d17.647454561950532!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc5d1bcca86516f%3A0x27508f2a34123bc1!2sAnmol%20Tours%20And%20Travels%20Solapur%20(Car%20Rental%20%2FCar%20Hire%20%2F%20Solapur%20Cab%2F%20Cab%20services%20in%20solapur)!5e1!3m2!1sen!2sin!4v1766486639905!5m2!1sen!2sin" width="100%" height="250px" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                </motion.div>
                             </motion.div>
 
                             {/* Contact Form */}
@@ -299,7 +318,7 @@ export default function ContactPage() {
                 </section>
             </main>
             <FAQSection />
-            <Footer/>
+            <Footer />
         </>
     )
 }

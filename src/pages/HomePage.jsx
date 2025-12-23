@@ -29,6 +29,8 @@ import lonavala from "../asset/lonavala.jpg"
 import GalleryImg1 from "../asset/galleryImage1.jpg"
 import GalleryImg2 from "../asset/galleryImage2.jpg"
 import GalleryImg3 from "../asset/galleryImage3.jpg"
+import PilgrimPackages from "../components/PilgrimPackages"
+import ServicesList from "../components/ServicesList"
 
 export default function HomePage() {
     return (
@@ -36,7 +38,9 @@ export default function HomePage() {
             <Header />
             <HeroSection />
             <QuickBookingSection />
+            <PilgrimPackages/>
             <AboutSection />
+            <ServicesList/>
             <FeaturesSection />
             <FleetShowcase />
             <DestinationsSection />
@@ -1269,7 +1273,7 @@ function CTASection() {
                                 <span className="btn-shine" />
                             </button>
                         </motion.a>
-                        <motion.a href="tel:+919876543210" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} >
+                        <motion.a href="tel:+919503665843" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} >
                             <button className="cta-btn">
                                 <span className="phone-icon">📞</span>
                                 Call Now

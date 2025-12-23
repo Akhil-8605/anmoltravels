@@ -4,6 +4,8 @@ import { useState } from "react"
 import { motion } from "framer-motion"
 import Header from "../components/Header"
 import "./PackagesPage.css"
+import PilgrimPackages from "../components/PilgrimPackages"
+import Footer from "../components/Footer"
 
 const cities = ["Pune", "Shirdi", "Solapur", "Aurangabad", "Jalgaon", "Nashik", "Thane", "Mumbai"]
 
@@ -52,6 +54,7 @@ export default function PackagesPage() {
                         </motion.p>
                     </div>
                 </motion.section>
+                <PilgrimPackages />
 
                 {/* Packages Section */}
                 <section className="packages-section">
@@ -133,6 +136,7 @@ export default function PackagesPage() {
                     </div>
                 </section>
             </main>
+            <Footer />
         </>
     )
 }
