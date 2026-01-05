@@ -5,25 +5,27 @@ import { motion, AnimatePresence } from "framer-motion"
 import Header from "../components/Header"
 import "./ContactPage.css"
 import Footer from "../components/Footer"
+import SEO from "../components/SEO"
+import { pageMetadata } from "../utils/seoConfig"
 
 function FAQSection() {
     const [openIndex, setOpenIndex] = useState(0)
     const faqs = [
         {
             q: "How do I book a vehicle?",
-            a: "You can book through our website, call us directly, or use our WhatsApp booking. We offer instant confirmation and 24/7 support.",
+            a: "You can book through our website, call us directly at +91-9503665843, or use our WhatsApp booking. We offer instant confirmation and 24/7 support.",
         },
         {
             q: "What types of vehicles do you offer?",
-            a: "We have a diverse fleet including sedans, SUVs, tempo travellers, mini buses, and luxury coaches to suit all your travel needs.",
+            a: "We have a diverse fleet including sedans (Swift Dzire), SUVs (Innova, Innova Crysta), tempo travellers, mini buses, and luxury coaches to suit all your travel needs.",
         },
         {
             q: "Are your drivers experienced?",
-            a: "Yes, all our drivers are professionally trained with 5+ years of experience, proper licensing, and excellent knowledge of routes.",
+            a: "Yes, all our drivers are professionally trained with 5+ years of experience, proper licensing, and excellent knowledge of routes across Maharashtra.",
         },
         {
             q: "Do you offer outstation trips?",
-            a: "We specialize in outstation trips across Maharashtra, Goa, and other popular destinations in India.",
+            a: "We specialize in outstation trips across Maharashtra to destinations like Goa, Mahabaleshwar, Shirdi, Pandharpur, and other popular locations.",
         },
     ]
 
@@ -127,8 +129,64 @@ export default function ContactPage() {
         setLoading(false)
     }
 
+    const contactSchemaLd = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "LocalBusiness",
+                "@id": "https://anmoltoursandtravels.com/contact",
+                name: "Anmol Tours & Travels",
+                image: "https://anmoltoursandtravels.com/og-preview.jpg",
+                telephone: "+91-9503665843",
+                email: "info@anmoltoursandtravels.com",
+                address: {
+                    "@type": "PostalAddress",
+                    streetAddress: "NEW RTO OFFICE, PLOT NO 203/26, Vijapur Rd, behind NIRMITI VIHAR, Vijay Deshmukh Nagar",
+                    addressLocality: "Solapur",
+                    addressRegion: "Maharashtra",
+                    postalCode: "413004",
+                    addressCountry: "IN",
+                },
+                geo: {
+                    "@type": "GeoCoordinates",
+                    latitude: "17.6599",
+                    longitude: "75.8594",
+                },
+                url: "https://anmoltoursandtravels.com/contact",
+                openingHours: "Mo-Su 06:00-22:00",
+            },
+            {
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                    {
+                        "@type": "ListItem",
+                        position: 1,
+                        name: "Home",
+                        item: "https://anmoltoursandtravels.com",
+                    },
+                    {
+                        "@type": "ListItem",
+                        position: 2,
+                        name: "Contact",
+                        item: "https://anmoltoursandtravels.com/contact",
+                    },
+                ],
+            },
+        ],
+    }
+
     return (
         <>
+            <SEO
+                title={pageMetadata.contact.title}
+                description={pageMetadata.contact.description}
+                keywords={pageMetadata.contact.keywords}
+                url="https://anmoltoursandtravels.com/contact"
+                image="https://anmoltoursandtravels.com/og-preview.jpg"
+                jsonLd={contactSchemaLd}
+                canonical="https://anmoltoursandtravels.com/contact"
+                robots="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+            />
             <Header />
             <main className="contact-page">
                 {/* Hero Section */}
@@ -153,7 +211,7 @@ export default function ContactPage() {
                             transition={{ duration: 0.8, delay: 0.4 }}
                             className="contact-hero-subtitle"
                         >
-                            Get in touch with ANMOL Travels
+                            Get in touch with ANMOL Travels for bookings and inquiries
                         </motion.p>
                     </div>
                 </motion.section>
@@ -169,7 +227,6 @@ export default function ContactPage() {
                                 transition={{ duration: 0.6, delay: 0.2 }}
                                 style={{ paddingBottom: ".25rem" }}
                             >
-
                                 <motion.div
                                     className="contact-info-box"
                                     style={{ paddingBottom: ".75rem" }}
@@ -179,7 +236,7 @@ export default function ContactPage() {
                                 >
                                     <h2>Get In Touch</h2>
 
-                                    <a style={{ textDecoration: "none" }} href="tel:9503665843" className="info-item">
+                                    <a style={{ textDecoration: "none" }} href="tel:+919503665843" className="info-item">
                                         <div className="info-icon">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
@@ -191,7 +248,11 @@ export default function ContactPage() {
                                         </div>
                                     </a>
 
-                                    <a style={{ textDecoration: "none" }} href="mailto:anmoltoursandtravels@gmail.com" className="info-item">
+                                    <a
+                                        style={{ textDecoration: "none" }}
+                                        href="mailto:anmoltoursandtravels@gmail.com"
+                                        className="info-item"
+                                    >
                                         <div className="info-icon">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
@@ -204,7 +265,11 @@ export default function ContactPage() {
                                         </div>
                                     </a>
 
-                                    <a style={{ textDecoration: "none" }} href="https://maps.app.goo.gl/EeChf6VDFCBU7UU26" className="info-item">
+                                    <a
+                                        style={{ textDecoration: "none" }}
+                                        href="https://maps.app.goo.gl/EeChf6VDFCBU7UU26"
+                                        className="info-item"
+                                    >
                                         <div className="info-icon">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
@@ -226,7 +291,14 @@ export default function ContactPage() {
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ duration: 0.6, delay: 0.2 }}
                                 >
-                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d708.0407003641604!2d75.88790602293835!3d17.647454561950532!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc5d1bcca86516f%3A0x27508f2a34123bc1!2sAnmol%20Tours%20And%20Travels%20Solapur%20(Car%20Rental%20%2FCar%20Hire%20%2F%20Solapur%20Cab%2F%20Cab%20services%20in%20solapur)!5e1!3m2!1sen!2sin!4v1766486639905!5m2!1sen!2sin" width="100%" height="250px" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                    <iframe
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d708.0407003641604!2d75.88790602293835!3d17.647454561950532!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc5d1bcca86516f%3A0x27508f2a34123bc1!2sAnmol%20Tours%20And%20Travels%20Solapur%20(Car%20Rental%20%2FCar%20Hire%20%2F%20Solapur%20Cab%2F%20Cab%20services%20in%20solapur)!5e1!3m2!1sen!2sin!4v1766486639905!5m2!1sen!2sin"
+                                        width="100%"
+                                        height="250px"
+                                        allowFullScreen=""
+                                        loading="lazy"
+                                        referrerPolicy="no-referrer-when-downgrade"
+                                    ></iframe>
                                 </motion.div>
                             </motion.div>
 

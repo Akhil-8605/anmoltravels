@@ -16,6 +16,8 @@ import GalleryImg10 from "../asset/galleryImage10.jpg"
 import GalleryImg11 from "../asset/galleryImage11.jpg"
 import GalleryImg12 from "../asset/galleryImage12.jpg"
 import Footer from "../components/Footer"
+import SEO from "../components/SEO"
+import { pageMetadata } from "../utils/seoConfig"
 
 const galleryImages = [
     GalleryImg1,
@@ -33,8 +35,51 @@ const galleryImages = [
 ]
 
 export default function GalleryPage() {
+    const gallerySchemaLd = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "ImageGallery",
+                name: "Anmol Tours & Travels Gallery",
+                url: "https://anmoltoursandtravels.com/gallery",
+                description: "Photo gallery showcasing our vehicles, tours, and satisfied customers",
+                image: galleryImages.map((img) => ({
+                    "@type": "ImageObject",
+                    url: img,
+                })),
+            },
+            {
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                    {
+                        "@type": "ListItem",
+                        position: 1,
+                        name: "Home",
+                        item: "https://anmoltoursandtravels.com",
+                    },
+                    {
+                        "@type": "ListItem",
+                        position: 2,
+                        name: "Gallery",
+                        item: "https://anmoltoursandtravels.com/gallery",
+                    },
+                ],
+            },
+        ],
+    }
+
     return (
         <>
+            <SEO
+                title={pageMetadata.gallery.title}
+                description={pageMetadata.gallery.description}
+                keywords={pageMetadata.gallery.keywords}
+                url="https://anmoltoursandtravels.com/gallery"
+                image="https://anmoltoursandtravels.com/og-preview.jpg"
+                jsonLd={gallerySchemaLd}
+                canonical="https://anmoltoursandtravels.com/gallery"
+                robots="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+            />
             <Header />
             <main className="gallery-page">
                 {/* Hero Section */}

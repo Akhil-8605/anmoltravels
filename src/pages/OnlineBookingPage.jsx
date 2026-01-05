@@ -26,6 +26,8 @@ import Seater40Ac from "../asset/vehicles/40 seater ac.webp"
 import Seater45Ac from "../asset/vehicles/45 seater ac.webp"
 import Seater45NonAc from "../asset/vehicles/45 seater non ac.webp"
 import Footer from "../components/Footer"
+import SEO from "../components/SEO"
+import { pageMetadata } from "../utils/seoConfig"
 
 const vehicles = [
     {
@@ -262,9 +264,48 @@ export default function OnlineBookingPage() {
         fleetSection?.scrollIntoView({ behavior: "smooth" })
     }
 
+    const bookingSchemaLd = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                    {
+                        "@type": "ListItem",
+                        position: 1,
+                        name: "Home",
+                        item: "https://anmoltoursandtravels.com",
+                    },
+                    {
+                        "@type": "ListItem",
+                        position: 2,
+                        name: "Online Booking",
+                        item: "https://anmoltoursandtravels.com/online-booking",
+                    },
+                ],
+            },
+            {
+                "@type": "CollectionPage",
+                name: "Vehicle Rental Booking",
+                description: "Browse and book from our fleet of 20+ vehicles",
+                url: "https://anmoltoursandtravels.com/online-booking",
+            },
+        ],
+    }
+
     return (
         <>
             <Header />
+            <SEO
+                title={pageMetadata.booking.title}
+                description={pageMetadata.booking.description}
+                keywords={pageMetadata.booking.keywords}
+                url="https://anmoltoursandtravels.com/online-booking"
+                image="https://anmoltoursandtravels.com/og-preview.jpg"
+                jsonLd={bookingSchemaLd}
+                canonical="https://anmoltoursandtravels.com/online-booking"
+                robots="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+            />
             <main className="booking-page">
                 <motion.section
                     className="booking-hero"
@@ -297,18 +338,6 @@ export default function OnlineBookingPage() {
                         >
                             Experience luxury and comfort with our premium fleet. Book your perfect ride for unforgettable journeys.
                         </motion.p>
-
-                        {/* <motion.button
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.6 }}
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            onClick={scrollToFleet}
-                            className="hero-cta-button"
-                        >
-                            Explore Our Fleet
-                        </motion.button> */}
 
                         {/* Feature Cards */}
                         <motion.div

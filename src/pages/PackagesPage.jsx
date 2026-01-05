@@ -6,6 +6,8 @@ import Header from "../components/Header"
 import "./PackagesPage.css"
 import PilgrimPackages from "../components/PilgrimPackages"
 import Footer from "../components/Footer"
+import SEO from "../components/SEO"
+import { pageMetadata } from "../utils/seoConfig"
 
 const cities = ["Pune", "Shirdi", "Solapur", "Aurangabad", "Jalgaon", "Nashik", "Thane", "Mumbai"]
 
@@ -24,8 +26,78 @@ export default function PackagesPage() {
         window.open(whatsappUrl, "_blank")
     }
 
+    const packageSchemaLd = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                    {
+                        "@type": "ListItem",
+                        position: 1,
+                        name: "Home",
+                        item: "https://anmoltoursandtravels.com",
+                    },
+                    {
+                        "@type": "ListItem",
+                        position: 2,
+                        name: "Packages",
+                        item: "https://anmoltoursandtravels.com/packages",
+                    },
+                ],
+            },
+            {
+                "@type": "FAQPage",
+                mainEntity: [
+                    {
+                        "@type": "Question",
+                        name: "Do you provide car rental services in Solapur?",
+                        acceptedAnswer: {
+                            "@type": "Answer",
+                            text: "Yes — we provide comprehensive car rental services and customized outstation packages from Solapur to various destinations across Maharashtra and India.",
+                        },
+                    },
+                    {
+                        "@type": "Question",
+                        name: "Can I send parcels via Anmol Travels?",
+                        acceptedAnswer: {
+                            "@type": "Answer",
+                            text: "Yes — we provide reliable parcel pickup & delivery services between Solapur, Pune and major cities in Maharashtra with guaranteed safe delivery.",
+                        },
+                    },
+                    {
+                        "@type": "Question",
+                        name: "What are your package delivery timelines?",
+                        acceptedAnswer: {
+                            "@type": "Answer",
+                            text: "Delivery timelines depend on the destination. Local deliveries are usually next day, while outstation packages take 2-5 days based on distance.",
+                        },
+                    },
+                    {
+                        "@type": "Question",
+                        name: "Do you offer customized tour packages?",
+                        acceptedAnswer: {
+                            "@type": "Answer",
+                            text: "Yes, we offer fully customized tour packages tailored to your preferences, budget, and schedule for pilgrimages, holidays, and corporate trips.",
+                        },
+                    },
+                ],
+            },
+        ],
+    }
+
     return (
         <>
+            <SEO
+                title={pageMetadata.packages.title}
+                description={pageMetadata.packages.description}
+                keywords={pageMetadata.packages.keywords}
+                url="https://anmoltoursandtravels.com/packages"
+                image="https://anmoltoursandtravels.com/og-preview.jpg"
+                jsonLd={packageSchemaLd}
+                canonical="https://anmoltoursandtravels.com/packages"
+                robots="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+            />
             <Header />
             <main className="packages-page">
                 {/* Hero Section */}
@@ -42,7 +114,7 @@ export default function PackagesPage() {
                             transition={{ duration: 0.8, delay: 0.2 }}
                             className="packages-hero-title"
                         >
-                            Packages
+                            Tour Packages & Delivery Services
                         </motion.h1>
                         <motion.p
                             initial={{ opacity: 0, y: 30 }}
@@ -50,7 +122,7 @@ export default function PackagesPage() {
                             transition={{ duration: 0.8, delay: 0.4 }}
                             className="packages-hero-subtitle"
                         >
-                            Send packages across cities with ease
+                            Send packages across cities with ease and explore amazing tour packages
                         </motion.p>
                     </div>
                 </motion.section>

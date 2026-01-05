@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useRef, use } from "react"
+import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence, useScroll, useTransform, useInView } from "framer-motion"
 import Header from "../components/Header"
 import HeroSection from "../components/HeroSection"
@@ -32,15 +32,53 @@ import GalleryImg3 from "../asset/galleryImage3.jpg"
 import PilgrimPackages from "../components/PilgrimPackages"
 import ServicesList from "../components/ServicesList"
 
+import SEO from "../components/SEO"
+import { pageMetadata, organizationSchema } from "../utils/seoConfig"
+
 export default function HomePage() {
+    const jsonLdData = {
+        "@context": "https://schema.org",
+        "@graph": [
+            organizationSchema,
+            {
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                    {
+                        "@type": "ListItem",
+                        position: 1,
+                        name: "Home",
+                        item: "https://anmoltoursandtravels.com",
+                    },
+                ],
+            },
+            {
+                "@type": "AggregateRating",
+                ratingValue: "4.8",
+                ratingCount: "150",
+                bestRating: "5",
+                worstRating: "1",
+            },
+        ],
+    }
+
     return (
         <div className="homepage">
+            <SEO
+                title={pageMetadata.home.title}
+                description={pageMetadata.home.description}
+                keywords={pageMetadata.home.keywords}
+                url="https://anmoltoursandtravels.com/"
+                image="https://anmoltoursandtravels.com/og-preview.jpg"
+                jsonLd={jsonLdData}
+                canonical="https://anmoltoursandtravels.com/"
+                robots="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+            />
             <Header />
             <HeroSection />
             <QuickBookingSection />
-            <PilgrimPackages/>
+            <PilgrimPackages />
             <AboutSection />
-            <ServicesList/>
+            <ServicesList />
             <FeaturesSection />
             <FleetShowcase />
             <DestinationsSection />
@@ -60,11 +98,27 @@ export default function HomePage() {
                 transition={{ delay: 1, duration: 0.6 }}
             >
                 <a href="tel:+919503665843" className="call-btn" aria-label="Call Now">
-                    <img src={Phone} alt="Call Now" className="call-btn-img" title="Call to +919503665843"/>
+                    <img
+                        src={Phone || "/placeholder.svg"}
+                        alt="Call Now"
+                        className="call-btn-img"
+                        title="Call to +919503665843"
+                    />
                 </a>
 
-                <a href="https://wa.me/+919503665843" className="call-btn" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
-                    <img src={Whatsapp} alt="WhatsApp" className="call-btn-img" title="Chat on WhatsApp with +919503665843"/>
+                <a
+                    href="https://wa.me/+919503665843"
+                    className="call-btn"
+                    aria-label="WhatsApp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <img
+                        src={Whatsapp || "/placeholder.svg"}
+                        alt="WhatsApp"
+                        className="call-btn-img"
+                        title="Chat on WhatsApp with +919503665843"
+                    />
                 </a>
             </motion.div>
         </div>
@@ -104,23 +158,22 @@ function AnimatedCounter({ target, suffix = "", duration = 2 }) {
 }
 
 function QuickBookingSection() {
-    const [activeTab, setActiveTab] = useState("one-way");
+    const [activeTab, setActiveTab] = useState("one-way")
 
-    const [from, setFrom] = useState("");
-    const [to, setTo] = useState("");
-    const [date, setDate] = useState("");
-    const [passengers, setPassengers] = useState("1-10 passengers");
+    const [from, setFrom] = useState("")
+    const [to, setTo] = useState("")
+    const [date, setDate] = useState("")
+    const [passengers, setPassengers] = useState("1-10 passengers")
 
     const handleSubmit = () => {
         if (!from || !to || !date) {
-            alert("Please fill all required fields.");
-            return;
+            alert("Please fill all required fields.")
+            return
         }
 
-        const phone = "+919503665843";
+        const phone = "+919503665843"
 
-        const msg =
-            `🚌 *New Booking Request*
+        const msg = `🚌 *New Booking Request*
 --------------------------------
 🔸 *Trip Type:* ${activeTab.replace("-", " ")}
 🔸 *From:* ${from}
@@ -128,11 +181,11 @@ function QuickBookingSection() {
 🔸 *Date:* ${date}
 🔸 *Passengers:* ${passengers}
 --------------------------------
-Kindly confirm the booking.`;
+Kindly confirm the booking.`
 
-        const whatsappURL = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
-        window.open(whatsappURL, "_blank");
-    };
+        const whatsappURL = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`
+        window.open(whatsappURL, "_blank")
+    }
 
     return (
         <section className="quick-booking">
@@ -201,9 +254,9 @@ Kindly confirm the booking.`;
                                 whileHover={{ rotate: 180, scale: 1.1 }}
                                 whileTap={{ scale: 0.9 }}
                                 onClick={() => {
-                                    const temp = from;
-                                    setFrom(to);
-                                    setTo(temp);
+                                    const temp = from
+                                    setFrom(to)
+                                    setTo(temp)
                                 }}
                             >
                                 ⇄
@@ -220,12 +273,7 @@ Kindly confirm the booking.`;
                             <label>To</label>
                             <div className="input-wrapper">
                                 <span className="input-icon">🎯</span>
-                                <input
-                                    type="text"
-                                    placeholder="Enter destination"
-                                    value={to}
-                                    onChange={(e) => setTo(e.target.value)}
-                                />
+                                <input type="text" placeholder="Enter destination" value={to} onChange={(e) => setTo(e.target.value)} />
                             </div>
                         </motion.div>
 
@@ -239,11 +287,7 @@ Kindly confirm the booking.`;
                             <label>Date</label>
                             <div className="input-wrapper">
                                 <span className="input-icon">📅</span>
-                                <input
-                                    type="date"
-                                    value={date}
-                                    onChange={(e) => setDate(e.target.value)}
-                                />
+                                <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
                             </div>
                         </motion.div>
 
@@ -257,10 +301,7 @@ Kindly confirm the booking.`;
                             <label>Passengers</label>
                             <div className="input-wrapper">
                                 <span className="input-icon">👥</span>
-                                <select
-                                    value={passengers}
-                                    onChange={(e) => setPassengers(e.target.value)}
-                                >
+                                <select value={passengers} onChange={(e) => setPassengers(e.target.value)}>
                                     <option>1-10 passengers</option>
                                     <option>11-20 passengers</option>
                                     <option>21-30 passengers</option>
@@ -284,7 +325,7 @@ Kindly confirm the booking.`;
                         <motion.span
                             className="btn-icon"
                             animate={{ x: [0, 5, 0] }}
-                            transition={{ duration: 1.5, repeat: Infinity }}
+                            transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}
                         >
                             →
                         </motion.span>
@@ -292,9 +333,8 @@ Kindly confirm the booking.`;
                 </motion.div>
             </div>
         </section>
-    );
+    )
 }
-
 
 function AboutSection() {
     const containerRef = useRef(null)
@@ -304,7 +344,7 @@ function AboutSection() {
     })
     const y = useTransform(scrollYProgress, [0, 1], [100, -100])
 
-    const navigation = useNavigate();
+    const navigation = useNavigate()
 
     return (
         <section className="about-section" ref={containerRef}>
@@ -318,7 +358,7 @@ function AboutSection() {
                         viewport={{ once: true }}
                     >
                         <motion.div className="about-image-main" style={{ y }}>
-                            <img src={AboutImage} alt="About ANMOL Travels" />
+                            <img src={AboutImage || "/placeholder.svg"} alt="About ANMOL Travels" />
                         </motion.div>
                         <motion.div
                             className="about-image-float"
@@ -327,7 +367,7 @@ function AboutSection() {
                             transition={{ delay: 0.4, duration: 0.6 }}
                             viewport={{ once: true }}
                         >
-                            <img src={HappyTravelersImage} alt="Happy Travelers" />
+                            <img src={HappyTravelersImage || "/placeholder.svg"} alt="Happy Travelers" />
                         </motion.div>
                         <motion.div
                             className="experience-badge"
@@ -510,7 +550,7 @@ function FleetShowcase() {
             price: "₹12/km",
             dailyRate: "₹3,600",
             ac: "AC",
-            image: SwiftDzire
+            image: SwiftDzire,
         },
         {
             name: "Ertiga",
@@ -518,7 +558,7 @@ function FleetShowcase() {
             price: "₹? /km",
             dailyRate: "₹4,500",
             ac: "AC",
-            image: Ertiga
+            image: Ertiga,
         },
         {
             name: "Tavera",
@@ -526,7 +566,7 @@ function FleetShowcase() {
             price: "₹? /km",
             dailyRate: "₹4,800",
             ac: "AC",
-            image: Tavera
+            image: Tavera,
         },
         {
             name: "Innova",
@@ -534,7 +574,7 @@ function FleetShowcase() {
             price: "₹? /km",
             dailyRate: "₹5,100",
             ac: "AC",
-            image: Innova
+            image: Innova,
         },
         {
             name: "Innova Crysta",
@@ -542,7 +582,7 @@ function FleetShowcase() {
             price: "₹? /km",
             dailyRate: "₹5,700",
             ac: "AC",
-            image: InnovaCrysta
+            image: InnovaCrysta,
         },
         {
             name: "Urbenia 17 Seater AC",
@@ -550,8 +590,8 @@ function FleetShowcase() {
             price: "₹? /km",
             dailyRate: "₹10,200",
             ac: "AC",
-            image: Urbenia17SeaterAC
-        }
+            image: Urbenia17SeaterAC,
+        },
     ]
 
     return (
@@ -589,7 +629,13 @@ function FleetShowcase() {
                                     <span className="seats">👥 {vehicle.seats}</span>
                                     <span className="price">{vehicle.price}</span>
                                 </div>
-                                <motion.a href="/online-booking" style={{ textDecoration: "none" }} className="book-fleet-btn" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                                <motion.a
+                                    href="/online-booking"
+                                    style={{ textDecoration: "none" }}
+                                    className="book-fleet-btn"
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                >
                                     Book Now
                                 </motion.a>
                             </div>
@@ -612,7 +658,7 @@ function FleetShowcase() {
                     <motion.span
                         className="btn-icon"
                         animate={{ x: [0, 5, 0] }}
-                        transition={{ duration: 1.5, repeat: Infinity }}
+                        transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}
                     >
                         →
                     </motion.span>
@@ -950,10 +996,7 @@ function TestimonialsSection() {
                                 </div>
                                 <p className="testimonial-text">{testimonials[activeIndex].text}</p>
                                 <div className="testimonial-author">
-                                    <img
-                                        src={person}
-                                        alt={testimonials[activeIndex].name}
-                                    />
+                                    <img src={person || "/placeholder.svg"} alt={testimonials[activeIndex].name} />
                                     <div>
                                         <h4>{testimonials[activeIndex].name}</h4>
                                         <p>{testimonials[activeIndex].role}</p>
@@ -981,11 +1024,7 @@ function TestimonialsSection() {
 }
 
 function GallerySection() {
-    const images = [
-        GalleryImg1,
-        GalleryImg2,
-        GalleryImg3,
-    ]
+    const images = [GalleryImg1, GalleryImg2, GalleryImg3]
 
     return (
         <section className="gallery-section">
@@ -1036,7 +1075,7 @@ function GallerySection() {
                     <motion.span
                         className="btn-icon"
                         animate={{ x: [0, 5, 0] }}
-                        transition={{ duration: 1.5, repeat: Infinity }}
+                        transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}
                     >
                         →
                     </motion.span>
@@ -1273,7 +1312,7 @@ function CTASection() {
                                 <span className="btn-shine" />
                             </button>
                         </motion.a>
-                        <motion.a href="tel:+919503665843" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} >
+                        <motion.a href="tel:+919503665843" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                             <button className="cta-btn">
                                 <span className="phone-icon">📞</span>
                                 Call Now

@@ -1,30 +1,160 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.jpg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <title>ANMOL TOURS & TRAVELS</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+<head>
+  <meta charset="utf-8" />
+  <!-- Enhanced meta tags for better SEO and social sharing -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+  <meta name="theme-color" content="#1f2937" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Anmol Tours & Travels" />
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+  <!-- Geo-location meta tags for local SEO -->
+  <meta name="geo.position" content="17.6599;75.8594" />
+  <meta name="ICBM" content="17.6599, 75.8594" />
+  <meta name="geo.placename" content="Solapur" />
+  <meta name="geo.region" content="IN-MH" />
+
+  <link rel="icon" href="%PUBLIC_URL%/favicon.png" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/favicon.jpg" />
+
+  <!-- Primary meta description -->
+  <meta name="description"
+    content="Anmol Tours & Travels — trusted car rentals, taxi services, pilgrimage packages and parcel delivery in Solapur & Pune. Book online or call +91-9503665843." />
+  <meta name="keywords"
+    content="Anmol Travels, Anmol Tours, car rentals Solapur, taxi service Pune, tour packages, tempo traveller rental, pilgrimage tours, package delivery, travels in Solapur, travels in Pune" />
+  <meta name="author" content="Anmol Tours & Travels" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="language" content="English" />
+  <meta name="revisit-after" content="7" />
+
+  <!-- Open Graph tags for social media -->
+  <meta property="og:site_name" content="Anmol Tours & Travels" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_IN" />
+  <meta property="og:title" content="Anmol Tours & Travels - Car Rentals, Tours & Travel Services" />
+  <meta property="og:description"
+    content="Professional car rental and travel services in Solapur & Pune. Book taxis, tours, and parcel delivery online." />
+  <meta property="og:url" content="https://anmoltoursandtravels.com" />
+  <meta property="og:image" content="https://anmoltoursandtravels.com/favicon.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter Card tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@anmoltours" />
+  <meta name="twitter:creator" content="@anmoltours" />
+  <meta name="twitter:title" content="Anmol Tours & Travels - Car Rentals & Travel Services" />
+  <meta name="twitter:description" content="Book car rentals, taxis, tours and parcel delivery in Solapur & Pune." />
+  <meta name="twitter:image" content="https://anmoltoursandtravels.com/favicon.png" />
+
+  <!-- Preconnect and DNS prefetch for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
+  <link rel="manifest" href="./manifest.json" />
+
+  <!-- Google verification -->
+  <meta name="google-site-verification" content="TqWVhPo59THWtoLHgTe_8PO-OQCcwUJSEVZMLeAh7mM" />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://anmoltoursandtravels.com" />
+
+  <!-- Hreflang for language alternatives -->
+  <link rel="alternate" hrefLang="en" href="https://anmoltoursandtravels.com" />
+  <link rel="alternate" hrefLang="en-IN" href="https://anmoltoursandtravels.com" />
+
+  <title>Anmol Tours & Travels - Car Rentals, Tours & Travel Services in Solapur & Pune</title>
+
+  <!-- Comprehensive Organization schema with all business details -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://anmoltoursandtravels.com",
+          "name": "Anmol Tours & Travels",
+          "alternateName": ["Anmol Travels", "Anmole"],
+          "url": "https://anmoltoursandtravels.com",
+          "logo": "https://anmoltoursandtravels.com/favicon.jpg",
+          "image": "https://anmoltoursandtravels.com/favicon.jpg",
+          "description": "Professional travel agency offering car rentals, taxi services, and pilgrimage tour packages in Solapur, Pune, and Maharashtra.",
+          "email": "info@anmoltoursandtravels.com",
+          "telephone": "+91-9503665843",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "Customer Service",
+            "telephone": "+91-9503665843",
+            "email": "info@anmoltoursandtravels.com",
+            "hoursAvailable": "Mo-Su 06:00-22:00"
+          },
+          "sameAs": [
+            "https://www.facebook.com/anmoltours",
+            "https://www.instagram.com/anmoltours",
+            "https://wa.me/919503665843",
+            "https://www.youtube.com/anmoltours"
+          ],
+          "priceRange": "₹₹"
+        },
+        {
+          "@type": "LocalBusiness",
+          "name": "Anmol Tours & Travels",
+          "image": "https://anmoltoursandtravels.com/og-preview.jpg",
+          "url": "https://anmoltoursandtravels.com",
+          "telephone": "+91-9503665843",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "NEW RTO OFFICE, PLOT NO 203/26, Vijapur Rd, behind NIRMITI VIHAR, Vijay Deshmukh Nagar",
+            "addressLocality": "Solapur",
+            "addressRegion": "Maharashtra",
+            "postalCode": "413004",
+            "addressCountry": "IN"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "17.6599",
+            "longitude": "75.8594"
+          },
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            "opens": "06:00",
+            "closes": "22:00"
+          },
+          "areaServed": ["Solapur", "Pune", "Maharashtra", "India"],
+          "priceRange": "₹₹"
+        },
+        {
+          "@type": "TravelAgency",
+          "name": "Anmol Tours & Travels",
+          "url": "https://anmoltoursandtravels.com",
+          "telephone": "+91-9503665843",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "NEW RTO OFFICE, PLOT NO 203/26, Vijapur Rd, behind NIRMITI VIHAR",
+            "addressLocality": "Solapur",
+            "addressRegion": "Maharashtra",
+            "postalCode": "413004",
+            "addressCountry": "IN"
+          },
+          "areaServed": [
+            {"@type": "City", "name": "Solapur"},
+            {"@type": "City", "name": "Pune"},
+            {"@type": "State", "name": "Maharashtra"}
+          ]
+        }
+      ]
+    }
+  </script>
+
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+</body>
+
 </html>

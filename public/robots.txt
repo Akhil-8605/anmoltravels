@@ -1,3 +1,26 @@
-# https://www.robotstxt.org/robotstxt.html
+# Robots.txt for Anmol Tours & Travels
+# Allow all crawlers to access the site
+
 User-agent: *
-Disallow:
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+
+# Specific rules for Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Specific rules for Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+# Sitemap locations
+Sitemap: https://anmoltoursandtravels.com/sitemap.xml
+Sitemap: https://anmoltoursandtravels.com/sitemap-pages.xml
+Sitemap: https://anmoltoursandtravels.com/sitemap-images.xml
+
+# Site canonical
+Host: https://anmoltoursandtravels.com
